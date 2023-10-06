@@ -1,10 +1,20 @@
-import {View, Text, TouchableOpacity, TextInput, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Alert,
+  Modal,
+  StyleSheet,
+  Pressable,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 
 const SignUp = () => {
   const navigation = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleSignup = () => {
@@ -12,7 +22,12 @@ const SignUp = () => {
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User account created & signed in!');
-        navigation.navigate('Login');
+        setModalVisible(true);
+        // navigate to the Login screen after 3 seconds
+        setTimeout(() => {
+          setModalVisible(false);
+          navigation.navigate('Login');
+        }, 2000); // 3 seconds
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -78,7 +93,7 @@ const SignUp = () => {
           borderRadius: 10,
           marginTop: 20,
           height: 50,
-          backgroundColor: 'yellow',
+          backgroundColor: 'blue',
         }}
         onPress={handleSignup}>
         <Text
@@ -104,8 +119,73 @@ const SignUp = () => {
           Already have an account? Login
         </Text>
       </TouchableOpacity>
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>successfully signup</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}>
+                <Text style={styles.textStyle}>OK</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+      </View>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+});
 
 export default SignUp;
