@@ -22,11 +22,12 @@ const Splash = () => {
   // Redirect based on user authentication status
   useEffect(() => {
     if (!initializing) {
+      
       if (user) {
         // User is authenticated, navigate to HomeScreen
         setTimeout(() => {
           navigation.navigate('Home');
-        }, 5000);
+        }, 1000);
       } else {
         // User is not authenticated, navigate to LoginScreen
         navigation.navigate('Login');
