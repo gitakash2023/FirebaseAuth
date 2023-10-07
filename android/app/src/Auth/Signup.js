@@ -27,7 +27,7 @@ const SignUp = () => {
         setTimeout(() => {
           setModalVisible(false);
           navigation.navigate('Login');
-        }, 2000); // 3 seconds
+        }, 4000); // 3 seconds
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
