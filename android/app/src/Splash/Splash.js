@@ -1,23 +1,42 @@
 // Splash.js
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 const Splash = () => {
   const navigation = useNavigation();
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
   useEffect(() => {
-    // Add any initialization logic or timers here
-    // After a delay or when your app is ready, navigate to the main screen
-    setTimeout(() => {
-      navigation.navigate('SignUp');
-    }, 2000); // 2000 milliseconds (2 seconds) delay for the splash screen
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
   }, []);
+  // Redirect based on user authentication status
+  useEffect(() => {
+    if (!initializing) {
+      if (user) {
+        // User is authenticated, navigate to HomeScreen
+        setTimeout(() => {
+          navigation.navigate('Home');
+        }, 5000);
+      } else {
+        // User is not authenticated, navigate to LoginScreen
+        navigation.navigate('Login');
+      }
+    }
+  }, [initializing, user, navigation]);
 
   return (
     <View>
-      {/* <Image
-        source={require('')} // Replace with the actual path to your image
-      /> */}
+      <Text>splash</Text>
     </View>
   );
 };
