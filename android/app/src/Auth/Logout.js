@@ -9,7 +9,7 @@ const Logout = () => {
     try {
       await auth().signOut(); // Firebase logout
       navigation.navigate('Login'); // Navigate to the Login screen after logout
-     
+      console.log('s');
     } catch (error) {
       console.error('Error logging out:', error);
     }
