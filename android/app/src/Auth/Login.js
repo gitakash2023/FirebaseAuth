@@ -32,9 +32,7 @@ const Login = () => {
     setEmail('');
     setPassword('');
   };
-  const loginWithgoogle = () => {};
-  const loginWithfb = () => {};
-
+  
   return (
     <>
       <View>
@@ -44,7 +42,7 @@ const Login = () => {
             fontSize: 24,
             color: 'black',
             marginTop: 50,
-            color: 'blue',
+            color: 'black',
           }}>
           Login
         </Text>
@@ -83,7 +81,7 @@ const Login = () => {
           borderRadius: 10,
           marginTop: 20,
           height: 50,
-          backgroundColor: 'yellow',
+          backgroundColor: 'white',
         }}>
         <Text
           onPress={onPressToLogin}
@@ -103,54 +101,12 @@ const Login = () => {
             marginTop: 20,
             color: 'black',
             fontSize: 24,
-            color: 'blue',
+            color: 'black',
           }}>
           Not have an account? Sign up here
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          width: '85%',
-          alignSelf: 'center',
-          borderWidth: 1,
-          borderRadius: 10,
-          marginTop: 50,
-          height: 50,
-          backgroundColor: 'blue',
-        }}>
-        <Text
-          onPress={loginWithgoogle}
-          style={{
-            alignSelf: 'center',
-            marginTop: 9,
-
-            color: 'black',
-            fontSize: 24,
-          }}>
-          Login with google
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          width: '85%',
-          alignSelf: 'center',
-          borderWidth: 1,
-          borderRadius: 10,
-          marginTop: 20,
-          height: 50,
-          backgroundColor: 'blue',
-        }}>
-        <Text
-          onPress={loginWithfb}
-          style={{
-            alignSelf: 'center',
-            marginTop: 9,
-            color: 'black',
-            fontSize: 24,
-          }}>
-          Login with facebook
-        </Text>
-      </TouchableOpacity>
+      
     </>
   );
 };
