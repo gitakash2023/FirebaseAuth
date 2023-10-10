@@ -1,16 +1,10 @@
 import {View, Text, Button} from 'react-native';
 import React from 'react';
-import Logout from './../Auth/Logout';
 
+import BottomTabNavigator from '../BottomTabNavigator/BottomTabNavigator';
 
 const Home = () => {
- 
-  return (
-    <View>
-      <Text>Home</Text>
-      <Logout/>
-    </View>
-  );
+  return <BottomTabNavigator />;
 };
 
 export default Home;

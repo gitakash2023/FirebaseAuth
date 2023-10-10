@@ -53,7 +53,7 @@ const SignUp = () => {
             fontSize: 24,
             color: 'black',
             marginTop: 50,
-            color: 'blue',
+            color: 'black',
           }}>
           Signup
         </Text>
@@ -89,11 +89,11 @@ const SignUp = () => {
         style={{
           width: '85%',
           alignSelf: 'center',
-          borderWidth: 0.5,
+          borderWidth: 1,
           borderRadius: 10,
           marginTop: 20,
           height: 50,
-          backgroundColor: 'blue',
+          backgroundColor: 'white',
         }}
         onPress={handleSignup}>
         <Text
@@ -113,7 +113,7 @@ const SignUp = () => {
             marginTop: 20,
             color: 'black',
             fontSize: 24,
-            color: 'blue',
+            color: 'black',
           }}
           onPress={() => navigation.navigate('Login')}>
           Already have an account? Login
