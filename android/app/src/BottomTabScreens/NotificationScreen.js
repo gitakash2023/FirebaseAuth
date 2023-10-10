@@ -1,15 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import NotificationHandler from '../Notification/NotificationHandler'
-import PushNotification from '../Notification/PushNotification'
+import {View, Text} from 'react-native';
+import React from 'react';
+import PushNotification from '../Notification/PushNotification';
 
 const NotificationScreen = () => {
   return (
     <View>
-      {/* <NotificationHandler/> */}
-      <PushNotification/>
+      <PushNotification />
     </View>
-  )
-}
+  );
+};
 
-export default NotificationScreen
+export default NotificationScreen;
