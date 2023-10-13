@@ -1,5 +1,8 @@
 import { View, Text } from 'react-native'
 import React,{useEffect} from 'react'
+import { Provider } from 'react-redux';
+import Counter from '../Redux/Counter';
+import store from '../Redux/store';
 
 const ProductsScreen = () => {
 
@@ -31,9 +34,9 @@ const ProductsScreen = () => {
 
   
   return (
-    <View>
-      <Text>ProductsScreen</Text>
-    </View>
+    <Provider store={store}>
+    <Counter />
+  </Provider>
   )
 }
 
