@@ -1,15 +1,15 @@
 import { View, Text } from 'react-native'
 import React,{useEffect} from 'react'
-import { Provider } from 'react-redux';
-import Counter from '../Redux/Counter';
-import store from '../Redux/store';
+// import { Provider } from 'react-redux';
+// import Counter from '../Redux/Counter';
+// import store from '../Redux/store';
 
 const ProductsScreen = () => {
 
   async function fetchData() {
     try {
       // Make an HTTP GET request using fetch
-      const response = await fetch('https://fakestoreapi.com/products');
+      const response = await fetch('');
       
       // Check if the response status is OK (HTTP 200)
       if (!response.ok) {
@@ -34,9 +34,10 @@ const ProductsScreen = () => {
 
   
   return (
-    <Provider store={store}>
-    <Counter />
-  </Provider>
+  
+  <>
+
+  </>
   )
 }
 
